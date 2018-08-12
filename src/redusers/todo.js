@@ -1,11 +1,6 @@
-/* const lala = {
-  id: 1000,
-  text: 'test text'
-}*/
-
 export default function todo(state = [], action) {
   switch (action.type) {
-    case 'ADD_TODO':
+    case "ADD_TODO":
       return [
         ...state,
         {
@@ -13,18 +8,14 @@ export default function todo(state = [], action) {
           text: action.text,
           complete: action.complete
         }
-      ]
-    case 'REM_TODO':
-      return state.filter(td =>
-        td.id !== action.id
-      )
-    case 'DONE_TODO': 
-      return state.map(td => 
-      td.id === action.id ?
-      {...td, complete: !td.complete} :
-      td
-      )    
+      ];
+    case "REM_TODO":
+      return state.filter(td => td.id !== action.id);
+    case "DONE_TODO":
+      return state.map(
+        td => (td.id === action.id ? { ...td, complete: !td.complete } : td)
+      );
     default:
-      return state
+      return state;
   }
 }
