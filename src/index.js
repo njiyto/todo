@@ -4,9 +4,9 @@ import App from "./screens/Main";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-import redusers from "./redusers/index";
+import reducers from "./reducers/index";
 
-const store = createStore(redusers);
+const store = createStore(reducers);
 
 render(
   <Provider store={store}>

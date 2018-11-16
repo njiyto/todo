@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import * as actions from "../../actions";
 
 import AddNote from "../AddNote";
 import List from "../List";
@@ -32,24 +33,17 @@ class Todo extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.todo);
   return {
-    todoState: state.todo
+    todoState: state
   };
 };
 
 let nextId = 0;
 const mapDispatchToProps = dispatch => {
   return {
-    add: text => {
-      dispatch({ type: "ADD_TODO", id: nextId++, text, complete: false });
-    },
-    rem: id => {
-      dispatch({ type: "REM_TODO", id: id });
-    },
-    done: id => {
-      dispatch({ type: "DONE_TODO", id: id });
-    }
+    add: text => dispatch(actions.add(nextId++, text)),
+    rem: id => dispatch(actions.remove(id)),
+    done: id => dispatch(actions.done(id))
   };
 };
 

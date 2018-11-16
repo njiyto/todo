@@ -12,8 +12,8 @@ export default function todo(state = [], action) {
     case "REM_TODO":
       return state.filter(td => td.id !== action.id);
     case "DONE_TODO":
-      return state.map(
-        td => (td.id === action.id ? { ...td, complete: !td.complete } : td)
+      return state.map(td =>
+        td.id === action.id ? { ...td, complete: !td.complete } : td
       );
     default:
       return state;
